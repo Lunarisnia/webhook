@@ -1,7 +1,10 @@
 const router = require("express").Router();
+const axios = require("axios");
 
-router.post("/github", (req, res) => {
-  res.send("Oke");
+router.post("/github", async (req, res) => {
+  const resp = await axios.post(
+    `https://api.callmebot.com/whatsapp.php?phone=${process.env.RIO_PHONE}&text=itwork&apikey=${process.env.RIO_KEY}`
+  );
 });
 
 module.exports = router;
