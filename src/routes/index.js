@@ -6,7 +6,7 @@ router.post("/github", async (req, res) => {
   const body = req.body;
   const message = 
 `
-*${moment(body.head_commit.timestamp).format("MMMM Do YYYY, h:mm:ss a")}*
+*${moment(body.head_commit.timestamp).lang('id').format("MMMM Do YYYY, h:mm:ss a")}*
 *${body.pusher.name}* Pushed *${body.head_commit.message}* at *${
 body.ref.split("/")[body.ref.split("/").length - 1]
 }*
