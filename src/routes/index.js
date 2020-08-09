@@ -20,7 +20,7 @@ router.post("/github", async (req, res) => {
       `${process.env.WA_API}?phone=${process.env.RUSLAN_PHONE}&text=${message}&apikey=${process.env.RUSLAN_KEY}`
     ),
   ]);
-  res.send("okeeeeeeeeeee");
+  res.send("okee");
 });
 
 module.exports = router;
