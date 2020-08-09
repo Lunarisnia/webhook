@@ -17,7 +17,7 @@ URL: ${body.repository.url}`;
     `${process.env.WA_API}?phone=${process.env.RIO_PHONE}&text=${message}&apikey=${process.env.RIO_KEY}`
   );
   const resp2 = await axios.post(
-    `${process.env.WA_API}?phone=${process.env.RUSLAN_PHONE}&text=${message}&apikey=${process.env.RUSLAN_KEY}`
+    `https://api.callmebot.com/whatsapp.php?phone=+6289613577326&text=${message}&apikey=900829`
   );
   res.send("oke");
 });
