@@ -1,10 +1,25 @@
 const router = require("express").Router();
 const axios = require("axios");
+const moment = require("moment");
 
 router.post("/github", async (req, res) => {
-  const resp = await axios.post(
-    `https://api.callmebot.com/whatsapp.php?phone=${process.env.RIO_PHONE}&text=itwork&apikey=${process.env.RIO_KEY}`
-  );
+  const body = req.body;
+  const message = `
+  *${moment(body.head_commit.timestamp).format("MMMM Do YYYY, h:mm:ss a")}*
+  *${body.pusher.name}* Pushed ${body.head_commit.message} at *${
+    body.ref.split("/")[body.ref.split("/").length - 1]
+  }*
+  
+  Repo: *${body.repository.name}*
+  Branch: *${body.ref.split("/")[body.ref.split("/").length - 1]}*`;
+  const resp = await Promise.all([
+    axios.post(
+      `${process.env.WA_API}?phone=${process.env.RIO_PHONE}&text=${message}&apikey=${process.env.RIO_KEY}`
+    ),
+    axios.post(
+      `${process.env.WA_API}?phone=${process.env.RUSLAN_PHONE}&text=${message}&apikey=${process.env.RUSLAN_KEY}`
+    ),
+  ]);
   res.send("okeeeeeeeeeee");
 });
 
