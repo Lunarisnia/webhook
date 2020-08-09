@@ -13,14 +13,12 @@ body.ref.split("/")[body.ref.split("/").length - 1]
 Repo: *${body.repository.name}*
 Branch: *${body.ref.split("/")[body.ref.split("/").length - 1]}*
 URL: ${body.repository.url}`;
-  const resp = await Promise.all([
-    axios.post(
-      `${process.env.WA_API}?phone=${process.env.RIO_PHONE}&text=${message}&apikey=${process.env.RIO_KEY}`
-    ),
-    axios.post(
-      `${process.env.WA_API}?phone=${process.env.RUSLAN_PHONE}&text=${message}&apikey=${process.env.RUSLAN_KEY}`
-    ),
-  ]);
+  const resp1 = await axios.post(
+    `${process.env.WA_API}?phone=${process.env.RIO_PHONE}&text=${message}&apikey=${process.env.RIO_KEY}`
+  );
+  const resp2 = await axios.post(
+    `${process.env.WA_API}?phone=${process.env.RUSLAN_PHONE}&text=${message}&apikey=${process.env.RUSLAN_KEY}`
+  );
   res.send("oke");
 });
 
