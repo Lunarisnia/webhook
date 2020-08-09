@@ -22,7 +22,7 @@ URL: ${body.repository.url}`;
       `${process.env.WA_API}?phone=${process.env.RUSLAN_PHONE}&text=${message}&apikey=${process.env.RUSLAN_KEY}`
     ),
   ]);
-  res.send("okee");
+  res.send("oke");
 });
 
 module.exports = router;
