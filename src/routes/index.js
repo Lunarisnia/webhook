@@ -9,8 +9,8 @@ router.get("/get", async (req, res) => {
     port: 587,
     secure: false, // true for 465, false for other ports
     auth: {
-      user: 'tania.berrylatte@gmail.com', // generated ethereal user
-      pass: 'mit4life123', // generated ethereal password
+      user: process.env.SMTP_USER, // generated ethereal user
+      pass: process.env.SMTP_PASSWORD, // generated ethereal password
     },
   });
   let info = await transporter.sendMail({
